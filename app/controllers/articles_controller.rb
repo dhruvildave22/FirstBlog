@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = User.first
 
+    respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
@@ -60,6 +61,7 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
     end
 
+    # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :description)
     end

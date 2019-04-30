@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<h1>Listing All Articles</h1>
 
 <table>
   <thead>
@@ -16,6 +15,10 @@
       <tr>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
+        <small>Created by: <%= article.user.username %>
+          <%= time_ago_in_words(article.created_at) %> ago,
+          last updated: <%= time_ago_in_words(article.updated_at)%> ago
+        </small>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
